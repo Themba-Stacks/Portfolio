@@ -68,8 +68,7 @@ img{
     text-shadow: 3px 3px rgba(14, 39, 151, 0.8); 
 }
 .section {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding: 6rem;
 }
 /*resusable*/
 
