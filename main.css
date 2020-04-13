@@ -10,6 +10,7 @@ html{
     font-weight: 700;
     font-family: 'Amatic SC', cursive;
     color: #eee;
+    
 }
 
 body{
@@ -18,6 +19,15 @@ body{
     background: url(images/gundam2.jpg) no-repeat center fixed;
     background-size: cover;
     box-shadow: inset 0 0 0 1000vh rgba(14, 4, 155, 0.8);
+    box-sizing: content-box;
+    display: grid;
+    grid-template-areas: 
+        "header"
+        "about"
+        "section-skills"
+        "section-portfolio"
+        "contact"
+        "copyright";
     
 }
 
@@ -74,6 +84,7 @@ img{
 
 /*Start header*/
 header{
+    grid-area: "header";
     width: 100%;
     height: 100vh;
     padding-bottom: 3rem;
@@ -90,6 +101,11 @@ header{
     border-bottom-right-radius: 100%;
     border-bottom-left-radius: 100%;
     transition: all 650ms cubic-bezier(1,0,0,1);
+}
+.top-nav.open{
+    top: 0;
+    height: 100%;
+    border-radius: initial;
 }
 
 .nav-list{
@@ -117,12 +133,6 @@ li{
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.top-nav.open{
-    top: 0;
-    border-radius: initial;
-}
-
 .menu-toggler{
     position: absolute;
     top: 5rem;
@@ -195,7 +205,14 @@ li{
 /*end header*/
 
 /* about*/
+.about{
+    grid-area: "about";
+    height: 100%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
 .about .container{
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -207,7 +224,6 @@ li{
     text-align: center;
     text-transform: uppercase;
     line-height: 0;
-    
     margin-bottom: 6rem;
 }
 .about-heading h1{
@@ -254,6 +270,13 @@ li{
 /* end about*/
 
 /* skills*/
+.section-skills{
+    grid-area: "section-skills";
+    height: 100%;
+}
+.section-heading{
+    margin-bottom: 5rem;
+}
 .my-skills{
     margin-top: -1rem;
     display: grid;
@@ -266,10 +289,18 @@ li{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
+    margin: 2rem;
+    padding: 2rem;  
+
 }
 .skills div{
     padding-top: 3rem;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .skills h1{
     font-size: 4rem;
@@ -281,20 +312,19 @@ li{
     font-size: 3rem;
     font-weight: 600;
 }
+
 .icon-container{
     width: 10rem;
     height: 10rem;
     border: 10px soldid #34026d;
     background-color: bisque;
     border-radius: 35%;
-    margin-bottom: 7px;
-    display: flex;
-    
+    margin-bottom: 7px;    
 }
 .icon-container i{
     color:#7806a5;
     font-size: 5rem;
-    padding-bottom: 1rem;
+    padding-bottom: 3rem;
     margin: auto;
 }.skills p{
     font-size: 3.5rem;
@@ -303,6 +333,16 @@ li{
 /* end skills*/
 
 /* portfolio*/
+.section-portfolio{
+    grid-area: "section-portfolio";
+    height: 100%;
+    display: flex;
+    flex-direction: column;    
+}
+#portfolio{
+    margin: 1rem;
+    
+}
 .portfolio-item{
     display: flex;
     align-items: center;
@@ -318,8 +358,8 @@ li{
 }
 
 .portfolio-image{
-    width: 50rem;
-    flex: 1;
+    width: 50%;
+    flex: 0;
     padding: 3rem;
     
 }
@@ -357,7 +397,7 @@ li{
 
 /* contact*/
 .contact{
-
+ grid-area: "contact";
 }
 form{
     width: 70%;
@@ -388,6 +428,7 @@ input[type="submit"]{
 
 /* footer*/
 .copyright{
+    grid-area: "copyright";
     display: flex;
     width: 100%;
     align-items: center;
@@ -401,3 +442,84 @@ input[type="submit"]{
 
 }
 /* end footer*/
+
+
+/* media */
+
+@media screen and (max-width: 768px){
+    .landing-text h1{
+        font-size: 15rem;
+    }
+    .landing-text h6{
+        font-size: 1.7rem;
+    }
+    .nav-list{
+        flex-direction: column;
+    }
+    li{
+        margin: 2rem 0;
+    }
+    .nav-link{
+        font-size: 4.5rem;
+    }
+    .about-heading h1{
+        font-size: 8rem;
+    }
+    .section-heading h1{
+        font-size: 3rem;
+    }
+    .about-details .nav-list{
+        flex-direction: initial;
+    }
+    .about-details li{
+        margin: 0 2rem;
+    }
+    .icon-container{
+        width: 7rem;
+        height: 7rem;
+    }
+    .icon-container i{
+        font-size: 4rem;
+    }
+    
+}
+
+@media screen and (max-width: 600px){
+    .menu-toggler{
+        top: 2rem;
+        right: 2rem;
+    }
+    .landing-text h1{
+        font-size: 8rem;
+    }
+    .landing-text h6{
+        font-size: 2.5rem;
+    }
+    .nav-link{
+        font-size: 3.5rem;
+    }
+    .about .container{
+        flex-direction: column;
+    }
+    .profile-img{
+        margin: 0 0 7rem 0;
+    }
+    .portfolio-item{
+        flex-direction: column;
+    }
+    .portfolio-image{
+        margin: 0 0 2rem 0;
+    }
+    .portfolio-description{
+        margin: 0;
+    }
+    .section-heading h1{
+        font-size: 3.5rem;
+    }
+    .section-heading h6{
+        font-size: 2.5rem;
+    }
+    .contact-details h6{
+        font-size: 2.5rem;
+    }
+}
